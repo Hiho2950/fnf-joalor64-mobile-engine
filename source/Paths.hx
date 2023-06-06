@@ -359,7 +359,7 @@ class Paths
 				return path;
 			}
 		}
-		return 'assets/videos/$key.mp4';
+		return SUtil.getPath() + 'assets/videos/$key.mp4';
 	}
 
 	static public function flashMovie(key:String)
@@ -490,8 +490,8 @@ class Paths
 			return File.getContent(modFolders(key));
 		#end
 
-		if (FileSystem.exists(getPreloadPath(key)))
-			return File.getContent(getPreloadPath(key));
+		if (FileSystem.exists(SUtil.getPath() + getPreloadPath(key)))
+			return File.getContent(SUtil.getPath() + getPreloadPath(key));
 		#end
 
 		return Assets.getText(getPath(key, TEXT));
@@ -505,7 +505,7 @@ class Paths
 			return file;
 		}
 		#end
-		return 'assets/fonts/$key';
+		return SUtil.getPath() + 'assets/fonts/$key';
 	}
 
 	inline static public function fileExists(key:String, type:AssetType, ?ignoreMods:Bool = false, ?library:String)
@@ -624,7 +624,7 @@ class Paths
 		}
 		#end
 		// I hate this so god damn much
-		var gottenPath:String = getPath('$path/$key.$SOUND_EXT', SOUND, library);
+		var gottenPath:String = SUtil.getPath() + getPath('$path/$key.$SOUND_EXT', SOUND, library);
 		gottenPath = gottenPath.substring(gottenPath.indexOf(':') + 1, gottenPath.length);
 		if (!currentTrackedSounds.exists(gottenPath))
 			#if (MODS_ALLOWED && FUTURE_POLYMOD)
@@ -714,7 +714,7 @@ class Paths
 				return fileToCheck;
 
 		}
-		return 'mods/$key';
+		return SUtil.getPath() + 'mods/$key';
 	}
 
 	static public function optionsExist(?key:String = null) // basically checks if a mod contains options
