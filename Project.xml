@@ -82,6 +82,8 @@
 		<assets path='example_mods' rename='mods' embed='false'/>
 		<assets path='modsList.txt'/>
 	</section>
+	
+	<assets path="mobile" rename="assets/mobile" if="mobile" /> <!-- in order to not have the mobile assets in another builds -saw -->
 
 	<assets path="assets/videos"        library="videos"        if="VIDEOS_ALLOWED || WEBM_ALLOWED || FLASH_MOVIE"/>
 
@@ -120,6 +122,7 @@
 	<!-- Miscellaneous -->
 	<haxelib name="hxcpp-debug-server" if="desktop debug"/>
 	<haxelib name="polymod-joalor64" if="FUTURE_POLYMOD"/>
+	<haxelib name="extension-androidtools" if="android"/>
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
@@ -165,7 +168,13 @@
 		<haxedef name="HXCPP_CHECK_POINTER" />
 		<haxedef name="HXCPP_STACK_LINE" />
 	</section>
-
+	
+	<!-- _________________________________ Android Stuff _______________________________ -->
+	<config:android permission="android.permission.READ_EXTERNAL_STORAGE" if="android"/>
+	<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" if="android"/>
+        <!--<config:android gradle-version="7.5.1" />
+        <config:android gradle-plugin="7.3.1" />-->
+	
 	<!-- _______________________________ Errors ______________________________ -->
 
 	<error value="You're not using NebulaZorua's fork of luajit. Use that instead." if="${linc_luajit == 0.0.4}" />
