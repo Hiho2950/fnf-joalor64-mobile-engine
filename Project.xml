@@ -163,17 +163,23 @@
 		<haxedef name="no-deprecation-warnings"/>
 	</section>
 	
-	<!--Used for Izzy Engine's crash handler-->
-	<section if="CRASH_HANDLER">
-		<haxedef name="HXCPP_CHECK_POINTER" />
-		<haxedef name="HXCPP_STACK_LINE" />
-	</section>
+	<haxedef name="HXCPP_CHECK_POINTER" />
+	<haxedef name="HXCPP_STACK_LINE" />
+	<haxedef name="HXCPP_STACK_TRACE" />
 	
 	<!-- _________________________________ Android Stuff _______________________________ -->
 	<config:android permission="android.permission.READ_EXTERNAL_STORAGE" if="android"/>
 	<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" if="android"/>
-        <!--<config:android gradle-version="7.5.1" />
-        <config:android gradle-plugin="7.3.1" />-->
+	
+	<section if="android">
+		<config>
+			<!--Gradle-->
+			<android gradle-version="7.4.2" gradle-plugin="7.3.1" />
+
+			<!--Target SDK-->
+			<android target-sdk-version="29" if="${lime &lt; 8.1.0}" />
+		</config>
+	</section>
 	
 	<!-- _______________________________ Errors ______________________________ -->
 
