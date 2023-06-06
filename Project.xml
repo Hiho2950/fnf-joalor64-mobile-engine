@@ -7,6 +7,7 @@
 	<app file="J64EngineRE_WIN" if="windows" />
 	<app file="J64EngineRE_APP" if="linux" />
 	<app file="J64EngineRE_MAC" if="mac" />
+	<app file="PsychEngine" if="android" />
 
 	<!-- Just for clarfication -->
 	<section if="debug">
@@ -34,17 +35,17 @@
 	<window if="mac" orientation="auto" fullscreen="false" resizable="true" vsync="false" allow-high-dpi="true" />
 
 	<!--Mobile-->
-	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" resizable="false"/>
+	<window if="mobile" orientation="landscape" fullscreen="true" width="1280" height="720" resizable="false"/>
 
 	<!-- _______________________________ Custom Defines ______________________________ -->
 
 	<!-- COMMENT THESE TO DISABLE THEM -->
-	<section if="desktop">
+	<section if="desktop || android">
 		<define name="MODS_ALLOWED" />
 		<define name="LUA_ALLOWED" />
 		<define name="HSCRIPT_ALLOWED" />
 		<define name="SCRIPT_EXTENSION" />
-		<define name="WEBM_ALLOWED" />
+		<define name="WEBM_ALLOWED" if="desktop"/>
 		<define name="FLASH_MOVIE" />
 		<define name="CHECK_FOR_UPDATES" />
 	</section>
