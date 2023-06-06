@@ -998,7 +998,7 @@ class PlayState extends MusicBeatState
 
 		// "GLOBAL" SCRIPTS
 		var filesPushed:Array<String> = [];
-		var foldersToCheck:Array<String> = [Paths.getPreloadPath('scripts/')];
+		var foldersToCheck:Array<String> = [SUtil.getPath() + Paths.getPreloadPath('scripts/')];
 
 		#if (MODS_ALLOWED && FUTURE_POLYMOD)
 		foldersToCheck.insert(0, Paths.mods('scripts/'));
@@ -1048,7 +1048,7 @@ class PlayState extends MusicBeatState
 			luaFile = Paths.modFolders(luaFile);
 			doPush = true;
 		} else {
-			luaFile = Paths.getPreloadPath(luaFile);
+			luaFile = SUtil.getPath() + Paths.getPreloadPath(luaFile);
 			if(FileSystem.exists(luaFile)) {
 				doPush = true;
 			}
@@ -1062,7 +1062,7 @@ class PlayState extends MusicBeatState
 			hscriptFile = Paths.modFolders(hscriptFile);
 			doPush = true;
 		} else {
-			hscriptFile = Paths.getPreloadPath(hscriptFile);
+			hscriptFile = SUtil.getPath() + Paths.getPreloadPath(hscriptFile);
 			if(FileSystem.exists(hscriptFile)) {
 				doPush = true;
 			}
@@ -1076,7 +1076,7 @@ class PlayState extends MusicBeatState
 			scriptFile = Paths.modFolders(scriptFile);
 			doPush = true;
 		} else {
-			scriptFile = Paths.getPreloadPath(scriptFile);
+			scriptFile = SUtil.getPath() + Paths.getPreloadPath(scriptFile);
 			if(FileSystem.exists(scriptFile)) {
 				doPush = true;
 			}
@@ -1178,11 +1178,11 @@ class PlayState extends MusicBeatState
 
 		var file:String = Paths.json(songName + '/dialogue'); //Checks for json/Psych Engine dialogue
 		if (OpenFlAssets.exists(file))
-			dialogueJson = DialogueBoxPsych.parseDialogue(file);
+			dialogueJson = DialogueBoxPsych.parseDialogue(SUtil.getPath + file);
 
 		var file:String = Paths.txt(songName + '/' + songName + 'Dialogue'); //Checks for vanilla/Senpai dialogue
 		if (OpenFlAssets.exists(file))
-			dialogue = CoolUtil.coolTextFile(file);
+			dialogue = CoolUtil.coolTextFile(SUtil.getPath + file);
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		doof.scrollFactor.set();
@@ -1357,14 +1357,14 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				luaToLoad = Paths.getPreloadPath('notetypes/' + notetype + '.lua');
+				luaToLoad = SUtil.getPath() + Paths.getPreloadPath('notetypes/' + notetype + '.lua');
 				if(FileSystem.exists(luaToLoad))
 				{
 					luaArray.push(new FunkinLua(luaToLoad));
 				}
 			}
 			#elseif sys
-			var luaToLoad:String = Paths.getPreloadPath('notetypes/' + notetype + '.lua');
+			var luaToLoad:String = SUtil.getPath() + Paths.getPreloadPath('notetypes/' + notetype + '.lua');
 			if(OpenFlAssets.exists(luaToLoad))
 			{
 				luaArray.push(new FunkinLua(luaToLoad));
@@ -1381,14 +1381,14 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				luaToLoad = Paths.getPreloadPath('events/' + event + '.lua');
+				luaToLoad = SUtil.getPath() + Paths.getPreloadPath('events/' + event + '.lua');
 				if(FileSystem.exists(luaToLoad))
 				{
 					luaArray.push(new FunkinLua(luaToLoad));
 				}
 			}
 			#elseif sys
-			var luaToLoad:String = Paths.getPreloadPath('events/' + event + '.lua');
+			var luaToLoad:String = SUtil.getPath() + Paths.getPreloadPath('events/' + event + '.lua');
 			if(OpenFlAssets.exists(luaToLoad))
 			{
 				luaArray.push(new FunkinLua(luaToLoad));
@@ -1407,14 +1407,14 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				hscriptToLoad = Paths.getPreloadPath('notetypes/' + notetype + '.hscript');
+				hscriptToLoad = SUtil.getPath() + Paths.getPreloadPath('notetypes/' + notetype + '.hscript');
 				if(FileSystem.exists(hscriptToLoad))
 				{
 					addHscript(hscriptToLoad);
 				}
 			}
 			#elseif sys
-			var hscriptToLoad:String = Paths.getPreloadPath('notetypes/' + notetype + '.hscript');
+			var hscriptToLoad:String = SUtil.getPath() + Paths.getPreloadPath('notetypes/' + notetype + '.hscript');
 			if(OpenFlAssets.exists(hscriptToLoad))
 			{
 				addHscript(hscriptToLoad);
@@ -1431,14 +1431,14 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				hscriptToLoad = Paths.getPreloadPath('events/' + event + '.hscript');
+				hscriptToLoad = SUtil.getPath() + Paths.getPreloadPath('events/' + event + '.hscript');
 				if(FileSystem.exists(hscriptToLoad))
 				{
 					addHscript(hscriptToLoad);
 				}
 			}
 			#elseif sys
-			var hscriptToLoad:String = Paths.getPreloadPath('events/' + event + '.hscript');
+			var hscriptToLoad:String = SUtil.getPath() + Paths.getPreloadPath('events/' + event + '.hscript');
 			if(OpenFlAssets.exists(hscriptToLoad))
 			{
 				addHscript(hscriptToLoad);
@@ -1457,14 +1457,14 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				hxToLoad = Paths.getPreloadPath('notetypes/' + notetype + '.hx');
+				hxToLoad = SUtil.getPath() + Paths.getPreloadPath('notetypes/' + notetype + '.hx');
 				if(FileSystem.exists(hxToLoad))
 				{
 					scriptArray.push(new FunkinSScript(hxToLoad));
 				}
 			}
 			#elseif sys
-			var hxToLoad:String = Paths.getPreloadPath('notetypes/' + notetype + '.hx');
+			var hxToLoad:String = SUtil.getPath() + Paths.getPreloadPath('notetypes/' + notetype + '.hx');
 			if(OpenFlAssets.exists(hxToLoad))
 			{
 				scriptArray.push(new FunkinSScript(hxToLoad));
@@ -1481,14 +1481,14 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				hxToLoad = Paths.getPreloadPath('events/' + event + '.hx');
+				hxToLoad = SUtil.getPath() + Paths.getPreloadPath('events/' + event + '.hx');
 				if(FileSystem.exists(hxToLoad))
 				{
 					scriptArray.push(new FunkinSScript(hxToLoad));
 				}
 			}
 			#elseif sys
-			var hxToLoad:String = Paths.getPreloadPath('events/' + event + '.hx');
+			var hxToLoad:String = SUtil.getPath() + Paths.getPreloadPath('events/' + event + '.hx');
 			if(OpenFlAssets.exists(hxToLoad))
 			{
 				scriptArray.push(new FunkinSScript(hxToLoad));
@@ -1501,7 +1501,7 @@ class PlayState extends MusicBeatState
 
 		// SONG SPECIFIC SCRIPTS
 		var filesPushed:Array<String> = [];
-		var foldersToCheck:Array<String> = [Paths.getPreloadPath('data/' + Paths.formatToSongPath(SONG.song) + '/')];
+		var foldersToCheck:Array<String> = [SUtil.getPath() + Paths.getPreloadPath('data/' + Paths.formatToSongPath(SONG.song) + '/')];
 
 		#if (MODS_ALLOWED && FUTURE_POLYMOD)
 		foldersToCheck.insert(0, Paths.mods('data/' + Paths.formatToSongPath(SONG.song) + '/'));
@@ -1902,7 +1902,7 @@ class PlayState extends MusicBeatState
 					doPush = true;
 				} else {
 				#end
-					cervix = Paths.getPreloadPath(cervix);
+					cervix = SUtil.getPath() + Paths.getPreloadPath(cervix);
 					if (OpenFlAssets.exists(cervix)) {
 						doPush = true;
 					}
@@ -1931,7 +1931,7 @@ class PlayState extends MusicBeatState
 					doPush = true;
 				} else {
 				#end
-					cervix = Paths.getPreloadPath(cervix);
+					cervix = SUtil.getPath() + Paths.getPreloadPath(cervix);
 					if (OpenFlAssets.exists(cervix)) {
 						doPush = true;
 					}
@@ -2080,13 +2080,13 @@ class PlayState extends MusicBeatState
 			luaFile = Paths.modFolders(luaFile);
 			doPush = true;
 		} else {
-			luaFile = Paths.getPreloadPath(luaFile);
+			luaFile = SUtil.getPath() + Paths.getPreloadPath(luaFile);
 			if(FileSystem.exists(luaFile)) {
 				doPush = true;
 			}
 		}
 		#else
-		luaFile = Paths.getPreloadPath(luaFile);
+		luaFile = SUtil.getPath() + Paths.getPreloadPath(luaFile);
 		if(Assets.exists(luaFile)) {
 			doPush = true;
 		}
@@ -2111,7 +2111,7 @@ class PlayState extends MusicBeatState
 			doPush = true;
 		} else {
 		#end
-			hscriptFile = Paths.getPreloadPath(hscriptFile);
+			hscriptFile = SUtil.getPath() + Paths.getPreloadPath(hscriptFile);
 			if (OpenFlAssets.exists(hscriptFile)) {
 				doPush = true;
 			}
@@ -2133,13 +2133,13 @@ class PlayState extends MusicBeatState
 			scriptFile = Paths.modFolders(scriptFile);
 			doPush = true;
 		} else {
-			scriptFile = Paths.getPreloadPath(scriptFile);
+			scriptFile = SUtil.getPath() + Paths.getPreloadPath(scriptFile);
 			if(FileSystem.exists(scriptFile)) {
 				doPush = true;
 			}
 		}
 		#else
-		scriptFile = Paths.getPreloadPath(scriptFile);
+		scriptFile = SUtil.getPath() + Paths.getPreloadPath(scriptFile);
 		if(Assets.exists(scriptFile)) {
 			doPush = true;
 		}
@@ -4642,7 +4642,7 @@ class PlayState extends MusicBeatState
 				#if sys
 				if (!inReplay)
 				{
-					var files:Array<String> = CoolUtil.coolPathArray(Paths.getPreloadPath('replays/'));
+					var files:Array<String> = CoolUtil.coolPathArray(SUtil.getPath() + Paths.getPreloadPath('replays/'));
 					var length:Null<Int> = null;
 					var song:String = SONG.song.coolSongFormatter().toLowerCase();
 
@@ -4653,7 +4653,7 @@ class PlayState extends MusicBeatState
 						length = files.length;
 
 					if (ClientPrefs.saveReplay)
-						File.saveContent(Paths.getPreloadPath('replays/$song ${length}.json'), ReplayState.stringify());
+						File.saveContent(SUtil.getPath() + Paths.getPreloadPath('replays/$song ${length}.json'), ReplayState.stringify());
 				}
 				#end
 

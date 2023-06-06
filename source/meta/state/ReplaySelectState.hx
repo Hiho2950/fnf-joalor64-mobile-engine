@@ -55,7 +55,7 @@ class ReplaySelectState extends MusicBeatState
 
         final song:String = songName.toLowerCase().coolReplace('-', ' ');
 
-        var path:Array<String> = CoolUtil.coolPathArray(Paths.getPreloadPath('replays/'));
+        var path:Array<String> = CoolUtil.coolPathArray(SUtil.getPath() + Paths.getPreloadPath('replays/'));
 
         if (path != null && path.length > 0)
         {
@@ -66,7 +66,7 @@ class ReplaySelectState extends MusicBeatState
                 if (!file.contains(song) || !file.endsWith('.json'))
                     continue;
 
-                var replayFile:ReplayFile = Json.parse(File.getContent(Paths.getPreloadPath('replays/$file')));
+                var replayFile:ReplayFile = Json.parse(File.getContent(SUtil.getPath() + Paths.getPreloadPath('replays/$file')));
 
                 menuItems.push(file);
                 difficulties.push(replayFile.currentDifficulty);

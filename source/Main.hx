@@ -49,6 +49,8 @@ class Main extends Sprite
 	{
 		super();
 
+		SUtil.gameCrashCheck();
+
 		meta.data.windows.WindowsAPI.setDarkMode(true);
 
 		ButtplugUtils.set_intensity(100);
@@ -94,6 +96,8 @@ class Main extends Sprite
 			#end
 			openfl.system.System.gc();
 		});
+
+		SUtil.doTheCheck();
 
 		ClientPrefs.loadDefaultKeys();
 		addChild(new FlxGame(gameWidth, gameHeight, Init, #if (flixel < "5.0.0") zoom, #end 60, 60, true, false));

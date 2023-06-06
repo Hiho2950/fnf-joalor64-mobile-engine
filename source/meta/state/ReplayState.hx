@@ -57,9 +57,9 @@ class ReplayState extends PlayState
 
         _song = PlayState.SONG.song.toLowerCase().replace('-', ' ');
         #if sys
-        final file:ReplayFile = Json.parse(File.getContent(Paths.getPreloadPath('replays/$_song $curDiff.json')));
+        final file:ReplayFile = Json.parse(File.getContent(SUtil.getPath() + Paths.getPreloadPath('replays/$_song $curDiff.json')));
         #else
-        final file:ReplayFile = Json.parse(Assets.getText(Paths.getPreloadPath('replays/$_song $curDiff.json')));
+        final file:ReplayFile = Json.parse(Assets.getText(SUtil.getPath() + Paths.getPreloadPath('replays/$_song $curDiff.json')));
         #end
 
         hits = file.hits;

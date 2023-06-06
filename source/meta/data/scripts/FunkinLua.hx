@@ -567,13 +567,13 @@ class FunkinLua {
 				doPush = true;
 			}
 			else {
-				cervix = Paths.getPreloadPath(cervix);
+				cervix = SUtil.getPath() + Paths.getPreloadPath(cervix);
 				if(FileSystem.exists(cervix)) {
 					doPush = true;
 				}
 			}
 			#else
-			cervix = Paths.getPreloadPath(cervix);
+			cervix = SUtil.getPath() + Paths.getPreloadPath(cervix);
 			if(Assets.exists(cervix)) {
 				doPush = true;
 			}
@@ -622,13 +622,13 @@ class FunkinLua {
 				doPush = true;
 			}
 			else {
-				cervix = Paths.getPreloadPath(cervix);
+				cervix = SUtil.getPath() + Paths.getPreloadPath(cervix);
 				if(FileSystem.exists(cervix)) {
 					doPush = true;
 				}
 			}
 			#else
-			cervix = Paths.getPreloadPath(cervix);
+			cervix = SUtil.getPath() + Paths.getPreloadPath(cervix);
 			if(Assets.exists(cervix)) {
 				doPush = true;
 			}
@@ -675,13 +675,13 @@ class FunkinLua {
 				doPush = true;
 			}
 			else {
-				cervix = Paths.getPreloadPath(cervix);
+				cervix = SUtil.getPath() + Paths.getPreloadPath(cervix);
 				if(FileSystem.exists(cervix)) {
 					doPush = true;
 				}
 			}
 			#else
-			cervix = Paths.getPreloadPath(cervix);
+			cervix = SUtil.getPath() + Paths.getPreloadPath(cervix);
 			if(Assets.exists(cervix)) {
 				doPush = true;
 			}
@@ -715,13 +715,13 @@ class FunkinLua {
 				doPush = true;
 			}
 			else {
-				cervix = Paths.getPreloadPath(cervix);
+				cervix = SUtil.getPath() + Paths.getPreloadPath(cervix);
 				if(FileSystem.exists(cervix)) {
 					doPush = true;
 				}
 			}
 			#else
-			cervix = Paths.getPreloadPath(cervix);
+			cervix = SUtil.getPath() + Paths.getPreloadPath(cervix);
 			if(Assets.exists(cervix)) {
 				doPush = true;
 			}
@@ -755,13 +755,13 @@ class FunkinLua {
 				doPush = true;
 			}
 			else {
-				cervix = Paths.getPreloadPath(cervix);
+				cervix = SUtil.getPath() + Paths.getPreloadPath(cervix);
 				if(FileSystem.exists(cervix)) {
 					doPush = true;
 				}
 			}
 			#else
-			cervix = Paths.getPreloadPath(cervix);
+			cervix = SUtil.getPath() + Paths.getPreloadPath(cervix);
 			if(Assets.exists(cervix)) {
 				doPush = true;
 			}
@@ -800,13 +800,13 @@ class FunkinLua {
 				doPush = true;
 			}
 			else {
-				cervix = Paths.getPreloadPath(cervix);
+				cervix = SUtil.getPath() + Paths.getPreloadPath(cervix);
 				if(FileSystem.exists(cervix)) {
 					doPush = true;
 				}
 			}
 			#else
-			cervix = Paths.getPreloadPath(cervix);
+			cervix = SUtil.getPath() + Paths.getPreloadPath(cervix);
 			if(Assets.exists(cervix)) {
 				doPush = true;
 			}
@@ -2132,7 +2132,7 @@ class FunkinLua {
 			if(Assets.exists(path))
 			#end
 			{
-				var shit:DialogueFile = DialogueBoxPsych.parseDialogue(path);
+				var shit:DialogueFile = DialogueBoxPsych.parseDialogue(SUtil.getPath + path);
 				if(shit.dialogue.length > 0) {
 					PlayState.instance.startDialogue(shit, music);
 					luaTrace('startDialogue: Successfully loaded dialogue', false, false, FlxColor.GREEN);
