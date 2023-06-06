@@ -1,0 +1,82 @@
+### FNF-Specific
+# File used for the NG API. Should not be shared with others.
+APIStuff.hx
+art/build_x32-officialrelease.bat
+art/build_x64-officialrelease.bat
+art/test_x64-debug-officialrelease.bat
+# Newgrounds IO Stuff
+source/NGio.hx
+source/io/
+# Misc
+Preloader.hx
+
+### FNF-Bot
+FNFBot.exe
+
+### GameJolt-Specific
+source/GJKeys.hx
+source/GameJolt.hx
+source/gamejolt/*
+
+### Android-Specific
+source/SUtil.hx
+source/android/*
+source/mobile/*
+source/mobile/flixel/*
+assets/android/*
+assets/images/androidcontrols/
+art/dependencyFiles/android/
+mobile/*
+
+### Appveyor-Specific
+appveyor.yml
+appveyor-win32.yml
+
+### Stage Editor-Related
+assets/images/stageborder.png
+source/meta/state/editors/StageEditorState.hx
+source/meta/data/LayerFile.hx
+
+### Stepmania Stuff
+### Maybe a new feature soon??
+assets/sm/
+source/smTools/
+
+### Misc
+art/mod.url
+polymod_mods/*
+example_mods/modList.txt
+source/Snd.hx
+source/SndTV.hx
+source/ChartParser.hx
+source/meta/state/editors/EditorLua.hx
+source/meta/state/editors/EditorPlayState.hx
+polymod-fix/PolymodFileSystem.hx
+* - Copy*
+
+### You can add any of these regardless of them getting ignored.
+!appveyor-linux.yml
+!appveyor-macos.yml
+!appveyor-windows.yml
+!azure-pipelines.yml
+!modchartexample.mc
+!.DS_Store
+!Thumbs.db
+
+### VS Code
+export/*
+.vscode/*
+.vscode/.temp
+source/.vscode/launch.json
+# Local history which shouldn't be shared.
+desktop.ini
+.history/
+.ionide
+# ! means a file should be added regardless of it getting ignored prior.
+# Including to allow others to use already set-up configuration tweaked for the project.
+!.code-workspace
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.vs/*
