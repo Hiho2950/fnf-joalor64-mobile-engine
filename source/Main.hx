@@ -1,6 +1,9 @@
 package;
 
+#if WEBM_ALLOWED
 import webm.WebmPlayer;
+#end
+
 import flixel.math.FlxMath;
 import flixel.util.FlxColor;
 import flixel.graphics.FlxGraphic;
