@@ -91,7 +91,7 @@ class Mods
 		var list:ModsList = {enabled: [], disabled: [], all: []};
 
 		try {
-			for (mod in CoolUtil.coolTextFile('modsList.txt'))
+			for (mod in CoolUtil.coolTextFile(SUtil.getPath() + 'modsList.txt'))
 			{
 				var dat = mod.split("|");
 				list.all.push(dat[0]);
@@ -112,7 +112,7 @@ class Mods
 		var list:Array<Array<Dynamic>> = [];
 		var added:Array<String> = [];
 		try {
-			for (mod in CoolUtil.coolTextFile('modsList.txt'))
+			for (mod in CoolUtil.coolTextFile(SUtil.getPath() + 'modsList.txt'))
 			{
 				var dat:Array<String> = mod.split("|");
 				var folder:String = dat[0];
@@ -146,7 +146,7 @@ class Mods
 			fileStr += values[0] + '|' + (values[1] ? '1' : '0');
 		}
 
-		File.saveContent('modsList.txt', fileStr);
+		SUtil.saveContent('modsList.txt', fileStr);
 		updatedOnState = true;
 	}
 
