@@ -55,16 +55,7 @@ class Init extends FlxState
 		{
 			StoryMenuState.weekCompleted = FlxG.save.data.weekCompleted;
 		}
-
-        	#if desktop
-		if (!DiscordClient.isInitialized)
-		{
-			DiscordClient.initialize();
-			Application.current.onExit.add (function (exitCode) {
-				DiscordClient.shutdown();
-			});
-		}
-		#end
+		
         	FlxG.mouse.visible = false;
 
         	FlxG.save.bind('j64enginerewrite', 'joalor64gh');
@@ -75,36 +66,7 @@ class Init extends FlxState
 			
         	persistentUpdate = true;
 		persistentDraw = true;
-
-        	#if CHECK_FOR_UPDATES
-		if(ClientPrefs.checkForUpdates) {
-			trace('checking for update');
-			var http = new Http("https://raw.githubusercontent.com/Joalor64GH/Joalor64-Engine-Rewrite/main/gitVersion.txt");
-
-			http.onData = function (data:String)
-			{
-				updateVersion = data.split('\n')[0].trim();
-				var curVersion:String = MainMenuState.joalor64EngineVersion.trim();
-				trace('version online: ' + updateVersion + ', your version: ' + curVersion);
-				if(updateVersion != curVersion) {
-					trace('versions arent matching!');
-					mustUpdate = true;
-				}
-			}
-
-			http.onError = function (error) {
-				trace('error: $error');
-			}
-
-			http.request();
-		}
-		#end
-
-        	if (mustUpdate) {
-            		FlxG.switchState(new OutdatedState());
-        	} else {
-            		FlxG.switchState(new TitleState());
-        	}
+            	FlxG.switchState(new TitleState());
         	super.create();
     	}
 }
