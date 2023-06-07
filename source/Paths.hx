@@ -236,7 +236,7 @@ class Paths
 
 	inline static public function txt(key:String, ?library:String)
 	{
-		return getPath(SUtil.getPath + 'data/$key.txt', TEXT, library);
+		return getPath('data/$key.txt', TEXT, library);
 	}
 
 	inline static public function xml(key:String, ?library:String) 
