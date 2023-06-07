@@ -81,25 +81,6 @@ class Main extends Sprite
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
 
-		FlxG.signals.preStateSwitch.add(() ->{
-			#if cpp
-			cpp.NativeGc.run(true);
-			cpp.NativeGc.enable(true);
-			#end
-			FlxG.bitmap.dumpCache();
-			FlxG.bitmap.clearUnused();
-
-			openfl.system.System.gc();
-		});
-
-		FlxG.signals.postStateSwitch.add(() ->{
-			#if cpp
-			cpp.NativeGc.run(false);
-			cpp.NativeGc.enable(false);
-			#end
-			openfl.system.System.gc();
-		});
-
 		SUtil.doTheCheck();
 
 		ClientPrefs.loadDefaultKeys();
@@ -114,25 +95,6 @@ class Main extends Sprite
 		}
 
 		var ourSource:String = "assets/videos/DO NOT DELETE OR GAME WILL CRASH/dontDelete.webm";
-
-		#if web
-		var str1:String = "HTML CRAP";
-		var vHandler = new VideoHandler();
-		vHandler.init1();
-		vHandler.video.name = str1;
-		addChild(vHandler.video);
-		vHandler.init2();
-		GlobalVideo.setVid(vHandler);
-		vHandler.source(ourSource);
-		#elseif WEBM_ALLOWED
-		var str1:String = "WEBM SHIT";
-		var webmHandle = new WebmHandler();
-		webmHandle.source(ourSource);
-		webmHandle.makePlayer();
-		webmHandle.webm.name = str1;
-		addChild(webmHandle.webm);
-		GlobalVideo.setWebm(webmHandle);
-		#end
 
 		#if html5
 		FlxG.autoPause = FlxG.mouse.visible = false;
@@ -222,6 +184,4 @@ class Main extends Sprite
 	{
 		fpsVar.textColor = color;
 	}
-
-	public static var webmHandler:WebmHandler;
 }
