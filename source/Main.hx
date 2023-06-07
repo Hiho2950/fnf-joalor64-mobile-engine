@@ -52,7 +52,7 @@ class Main extends Sprite
 	{
 		super();
 
-		SUtil.gameCrashCheck();
+		SUtil.uncaughtErrorHandler();
 
 		meta.data.windows.WindowsAPI.setDarkMode(true);
 
@@ -81,7 +81,7 @@ class Main extends Sprite
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
 
-		SUtil.doTheCheck();
+		SUtil.checkFiles();
 
 		ClientPrefs.loadDefaultKeys();
 		addChild(new FlxGame(gameWidth, gameHeight, Init, #if (flixel < "5.0.0") zoom, #end 60, 60, true, false));
